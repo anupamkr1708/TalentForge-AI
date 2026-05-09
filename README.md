@@ -124,7 +124,7 @@ LinkedIn Platform
 
 The **Streamlit dashboard** (`dashboard/web_dashboard.py`) gives you a live, tab-based view of the entire system.
 
-![TalentForge AI Dashboard](Dashboard.png)
+![TalentForge AI Dashboard](assets/screenshots/dashboard.png)
 
 > Live dashboard showing 25 processed applications — key system info in the sidebar (daily limit, min match score, LLM provider, Easy Apply mode), headline metrics across the top, and the Applications tab with per-row match scores, statuses, and skip reasons. Filter by applied / skipped / failed and export everything as CSV in one click.
 
