@@ -1,0 +1,49 @@
+# =========================
+# Secrets & Credentials
+# =========================
+.env
+.env.*
+cookies/
+linkedin_cookies.json
+
+# =========================
+# User Runtime Data
+# =========================
+data/
+logs/
+resumes/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.coverage
+
+# =========================
+# Virtual Environments
+# =========================
+venv/
+.venv/
+env/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
