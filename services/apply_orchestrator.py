@@ -103,6 +103,36 @@ class ApplyOrchestrator:
             f"🚀 Processing Easy Apply for {application.job_metadata.title} @ {application.job_metadata.company}"
         )
 
+        # Dry-run safety gate: _submit_easy_apply_application() is the
+        # actual application-submission execution boundary (today: a
+        # simulation; eventually: real Easy Apply automation). It must
+        # never be invoked while dry_run is enabled, regardless of how
+        # this method was reached.
+        if self.config.dry_run:
+            application.status = JobStatus.SKIPPED
+            application.skipped_reason = (
+                "Dry-run: application submission skipped (would have applied)"
+            )
+            self.logger.info(
+                "🧪 Dry-run enabled; skipping application submission for "
+                f"{application.job_metadata.title} @ "
+                f"{application.job_metadata.company}"
+            )
+            return application
+
+        return await self._submit_easy_apply_application(application)
+
+    async def _submit_easy_apply_application(
+        self, application: JobApplication
+    ) -> JobApplication:
+        """
+        Perform the actual Easy Apply submission side effect.
+
+        This is currently a simulation (see note below); once real Easy
+        Apply browser automation is implemented, it belongs here. This
+        method must only ever be reached when dry_run is False - callers
+        must go through _process_easy_apply(), which enforces that gate.
+        """
         # In a real implementation, this would integrate with the browser automation
         # For now, we'll simulate the process
 
