@@ -81,10 +81,16 @@ class ConfigManager:
             )
 
         # Check for cookies
+        # A missing LinkedIn cookie file is a configuration warning, not a fatal
+        # error: configuration must be able to initialize without an active
+        # LinkedIn session. Authenticated LinkedIn execution is validated
+        # separately by the authentication/platform layer when it is actually
+        # requested.
         cookie_path = Path(config.linkedin.cookie_file)
         if not cookie_path.exists():
-            errors.append(
-                f"Cookie file not found at {cookie_path} - authentication will fail"
+            warnings.append(
+                f"Cookie file not found at {cookie_path} - "
+                "LinkedIn authentication is not configured"
             )
 
         # Log warnings

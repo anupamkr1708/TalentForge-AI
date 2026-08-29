@@ -12,7 +12,7 @@ from pathlib import Path
 class LinkedInConfig:
     """LinkedIn-specific configuration"""
 
-    cookie_file: str = "linkedin_cookies.json"
+    cookie_file: str = "cookies/linkedin_cookies.json"
     refreshed_cookie_file: str = "linkedin_cookies_refreshed.json"
     base_url: str = "https://www.linkedin.com"
     feed_url: str = "https://www.linkedin.com/feed/"
